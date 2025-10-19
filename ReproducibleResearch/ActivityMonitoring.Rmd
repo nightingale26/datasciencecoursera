@@ -129,13 +129,13 @@ newactivity$steps[is.na(newactivity$steps)] <- tapply(newactivity$steps,newactiv
 
 4. Make a histogram of the total number of steps taken each day (after missing values are imputed) and calculate and report the mean and median total number of steps taken per day.
 
-```{r histnew, echo=TRUE}
+```{r histnew, echo=TRUE, fig.width = 7.5}
 
 histnewdata <- newactivity %>% group_by(date) %>% summarize(allsteps = sum(steps, na.rm = TRUE))
 
 ggplot(histnewdata, aes(x = allsteps)) +
   geom_histogram(fill = "orange", color = "black") +
-  labs(title = "Histogram of total number of steps taken each day (no NA)",
+  labs(title = "Histogram of total number of steps taken each day (no NA values)",
        x = "Steps",
        y = "Frequency") +
   theme_classic() +
